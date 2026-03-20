@@ -79,7 +79,7 @@ const ContactSection = () => {
         <div className="grid md:grid-cols-3 gap-8 md:gap-16">
           {[
             { href: "mailto:neelamcharitha2004@gmail.com", icon: Mail, label: "Email", value: "neelamcharitha2004@gmail.com" },
-            { href: "https://linkedin.com/in/charitha-neelam", icon: Linkedin, label: "LinkedIn", value: "charitha_neelam", external: true },
+            { href: "https://linkedin.com/in/charitha-neelam", icon: Linkedin, label: "LinkedIn", value: "charitha-neelam-5a2baa327", external: true },
             { href: "tel:+918008740770", icon: Phone, label: "Phone", value: " +91 733 891 8731" },
           ].map((item, i) => (
             <motion.a
