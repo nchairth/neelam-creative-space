@@ -25,13 +25,13 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section className="py-24 md:py-40 bg-secondary">
+    <section className="py-24 md:py-40 bg-secondary overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-20"
         >
           <p className="text-subtitle text-muted-foreground mb-6">How I Work</p>
@@ -43,17 +43,19 @@ const ProcessSection = () => {
             <motion.div
               key={i}
               className="group relative"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 80, rotateZ: -3 }}
+              whileInView={{ opacity: 1, y: 0, rotateZ: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
+              transition={{ duration: 0.8, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Connector line */}
               {i < steps.length - 1 && (
                 <div className="hidden md:block absolute top-8 left-[calc(50%+40px)] right-[-calc(50%-40px)] w-full h-px bg-border" />
               )}
 
-              <div className="relative bg-background rounded-2xl p-8 border border-border/50 hover:border-foreground/20 transition-all duration-500 hover:shadow-lg group-hover:-translate-y-2">
+              <motion.div
+                className="relative bg-background rounded-2xl p-8 border border-border/50 hover:border-foreground/20 transition-all duration-500 hover:shadow-lg"
+                whileHover={{ y: -12, scale: 1.03, transition: { duration: 0.3 } }}
+              >
                 <span
                   className="text-5xl font-bold text-border group-hover:text-foreground/15 transition-colors duration-500"
                   style={{ fontFamily: "var(--font-display)" }}
@@ -69,7 +71,7 @@ const ProcessSection = () => {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
-              </div>
+              </motion.div>
             </motion.div>
           ))}
         </div>

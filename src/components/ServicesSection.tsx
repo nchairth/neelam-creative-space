@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const services = [
   {
@@ -24,17 +25,29 @@ const services = [
 ];
 
 const ServicesSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+  const titleX = useTransform(scrollYProgress, [0, 0.3], [120, 0]);
+
   return (
-    <section id="services" className="py-24 md:py-40">
+    <section id="services" className="py-24 md:py-40" ref={sectionRef}>
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
         >
           <p className="text-subtitle text-muted-foreground mb-6">What I Do</p>
-          <h2 className="text-section-title text-foreground mb-16">Services</h2>
+          <motion.h2
+            className="text-section-title text-foreground mb-16"
+            style={{ x: titleX }}
+          >
+            Services
+          </motion.h2>
         </motion.div>
 
         <div className="space-y-0">
@@ -42,10 +55,11 @@ const ServicesSection = () => {
             <motion.div
               key={i}
               className="group border-t border-border py-10 md:py-14 flex flex-col md:flex-row md:items-center gap-4 md:gap-16 cursor-pointer hover:bg-secondary/50 transition-colors px-4 -mx-4 rounded-sm"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: i % 2 === 0 ? -80 : 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              transition={{ duration: 0.9, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ x: 10, transition: { duration: 0.3 } }}
             >
               <span className="text-sm text-muted-foreground font-mono w-12 shrink-0">
                 {service.number}
@@ -57,9 +71,13 @@ const ServicesSection = () => {
                 {service.title}
               </h3>
               <p className="text-body flex-1">{service.description}</p>
-              <span className="text-2xl text-muted-foreground group-hover:text-foreground group-hover:translate-x-2 transition-all duration-300 hidden md:block">
+              <motion.span
+                className="text-2xl text-muted-foreground group-hover:text-foreground hidden md:block"
+                whileHover={{ x: 8 }}
+                transition={{ duration: 0.2 }}
+              >
                 →
-              </span>
+              </motion.span>
             </motion.div>
           ))}
           <div className="border-t border-border" />
