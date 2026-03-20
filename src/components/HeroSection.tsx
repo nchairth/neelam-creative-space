@@ -94,16 +94,6 @@ const HeroSection = () => {
                   className="w-full h-full object-cover object-top"
                 />
               </div>
-              {/* Floating badge */}
-              <motion.div
-                className="absolute -bottom-4 -left-4 md:-left-8 bg-background border border-border rounded-xl px-5 py-3 shadow-lg"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 1.2, duration: 0.6 }}
-              >
-                <p className="text-xs tracking-widest uppercase text-muted-foreground">Available for</p>
-                <p className="text-sm font-semibold text-foreground mt-0.5" style={{ fontFamily: "var(--font-display)" }}>Freelance Work</p>
-              </motion.div>
               {/* Decorative dot grid */}
               <motion.div
                 className="absolute -top-6 -right-6 grid grid-cols-3 gap-2"
@@ -120,15 +110,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Side text */}
-      <motion.p
-        className="hidden lg:block absolute left-6 top-1/2 -translate-y-1/2 -rotate-90 origin-center text-subtitle tracking-[0.3em] text-muted-foreground"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-      >
-        UI/UX Designer
-      </motion.p>
 
       {/* Scroll indicator */}
       <motion.div

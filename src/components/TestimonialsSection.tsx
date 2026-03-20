@@ -31,13 +31,13 @@ const TestimonialsSection = () => {
   }, []);
 
   return (
-    <section className="py-24 md:py-40">
+    <section className="py-24 md:py-40 overflow-hidden">
       <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           className="mb-16"
         >
           <p className="text-subtitle text-muted-foreground mb-6">Testimonials</p>
@@ -45,15 +45,22 @@ const TestimonialsSection = () => {
         </motion.div>
 
         <div className="relative min-h-[280px] flex items-center justify-center">
-          <Quote size={60} className="absolute top-0 left-1/2 -translate-x-1/2 text-border" />
-          
+          <motion.div
+            initial={{ opacity: 0, rotate: -10 }}
+            whileInView={{ opacity: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+          >
+            <Quote size={60} className="absolute top-0 left-1/2 -translate-x-1/2 text-border" />
+          </motion.div>
+
           <AnimatePresence mode="wait">
             <motion.div
               key={current}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, y: 50, scale: 0.95, filter: "blur(10px)" }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -50, scale: 0.95, filter: "blur(10px)" }}
+              transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
               className="pt-12"
             >
               <p
@@ -74,15 +81,16 @@ const TestimonialsSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* Dots */}
         <div className="flex justify-center gap-3 mt-10">
           {testimonials.map((_, i) => (
-            <button
+            <motion.button
               key={i}
               onClick={() => setCurrent(i)}
               className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                 i === current ? "bg-foreground scale-125" : "bg-border hover:bg-muted-foreground"
               }`}
+              whileHover={{ scale: 1.5 }}
+              whileTap={{ scale: 0.8 }}
               aria-label={`Go to testimonial ${i + 1}`}
             />
           ))}
