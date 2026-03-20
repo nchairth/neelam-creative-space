@@ -116,7 +116,7 @@
     font-family: var(--font-body);
   }
   .portfolio-card {
-    @apply overflow-hidden group cursor-pointer;
+    @apply overflow-hidden cursor-pointer;
   }
   .portfolio-card img {
     @apply transition-transform duration-700 ease-out group-hover:scale-105;
