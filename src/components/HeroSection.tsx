@@ -110,15 +110,6 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Side text */}
-      <motion.p
-        className="hidden lg:block absolute left-6 top-1/2 -translate-y-1/2 -rotate-90 origin-center text-subtitle tracking-[0.3em] text-muted-foreground"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
-      >
-        UI/UX Designer
-      </motion.p>
 
       {/* Scroll indicator */}
       <motion.div
