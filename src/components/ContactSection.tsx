@@ -80,7 +80,7 @@ const ContactSection = () => {
           {[
             { href: "mailto:neelamcharitha2004@gmail.com", icon: Mail, label: "Email", value: "neelamcharitha2004@gmail.com" },
             { href: "https://linkedin.com/in/charitha-neelam", icon: Linkedin, label: "LinkedIn", value: "charitha_neelam", external: true },
-            { href: "tel:+918008740770", icon: Phone, label: "Phone", value: "+91 800 874 0770" },
+            { href: "tel:+918008740770", icon: Phone, label: "Phone", value: " +91 733 891 8731" },
           ].map((item, i) => (
             <motion.a
               key={i}
