@@ -7,7 +7,7 @@ const tools = [
   { name: "Illustrator", icon: "✏️" },
   { name: "After Effects", icon: "🎬" },
   { name: "Canva", icon: "🔲" },
-  { name: "Blender", icon: "🧊" },
+  { name: "VS Code", icon: "🧊" },
   { name: "Notion", icon: "📝" },
 ];
 
